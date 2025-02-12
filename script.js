@@ -309,14 +309,3 @@ document.addEventListener("DOMContentLoaded", function () {
     var player = document.getElementById("youtube-player");
     player.src = "https://youtu.be/u7XjPmN-tHw?si=fcgp_89yv0DCi1OH";
 });
-
-
-
-
-  // Función para reproducir la música al hacer clic en cualquier parte de la pantalla
-  document.body.addEventListener('click', function() {
-    var audio = document.getElementById('audio-player');
-    if (audio.paused) { // Solo reproduce si no está ya sonando
-        audio.play();
-    }
-});
