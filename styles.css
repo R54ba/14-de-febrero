@@ -1,172 +1,114 @@
- body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    background: #fce5cd; /* Fondo color pastel */
-}
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background: #fce5cd;
+    }
 
-.container {
-    text-align: center;
-    margin-top: -120px;
-}
+    .container {
+        text-align: center;
+        margin-top: -120px;
+    }
 
-svg {
-    width: 800px;
-    height: 300px;
+    svg {
+        width: 800px;
+        height: 300px;
+    }
 
-}
-.rectangulo {
-    width: 160px; /* Ancho */
-    height: 18px; /* Alto */
-    background-color: brown; /* Color de fondo */
-    border: 5px solid black   ack; /* Borde */
-    position: absolute;
-    top: 50%;
-    left: 605px;
-    transform: translate(-50%, -50%); /* Ajusta el centro exacto */ 
-    transform: translateY(110px);
-    outline: 2px solid black;
-    border-radius: 10px;
+    .rectangulo {
+        width: 160px;
+        height: 18px;
+        background-color: brown;
+        border: 5px solid black;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, 110px);
+        outline: 2px solid black;
+        border-radius: 10px;
+    }
 
-}
-.maceta {
-    width: 150px;
-    height: 100px;
-    background-color: brown;
-    clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
-    border: 2px solid bl    ack; /* Borde */
-    position: absolute;
-    top: 50%;
-    left: 44.7%;
-    transform: translate(-50%, -50%); /* Ajusta el centro exacto */ 
-    transform: translateY(129px);
-    clip-path: polygon(0% 0%, 100% 0%, 80% 100%, 20% 100%);
+    .maceta {
+        width: 150px;
+        height: 100px;
+        background-color: brown;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, 129px);
+        clip-path: polygon(0% 0%, 100% 0%, 80% 100%, 20% 100%);
+    }
 
-    
-}
-.tierra {
-    width: 10%;
-    height: 40px;
-    background-color: #4b2e16; /* Marrón oscuro */
-    border-radius: 50% 50% 0 0; /* Redondeado arriba */
-    position: absolute;
-    bottom: 0;
-    box-shadow: inset 0px -5px 10px rgba(0, 0, 0, 0.4); /* Efecto de profundidad */
-    bottom: 230px; /* Sube la tierra 10px más */
-}
-@keyframes bailar {
-    0% { transform: rotate(0deg); }
-    25% { transform: rotate(-10deg); } /* Se inclina bien a la izquierda */
-    50% { transform: rotate(0deg); } /* Vuelve al centro */
-    75% { transform: rotate(10deg); } /* Se inclina bien a la derecha */
-    100% { transform: rotate(0deg); } /* Regresa al centro */
-}
+ 
 
-#girasol {
-    transform-origin: bottom center; /* Asegura que rote desde la base */
-    animation: bailar 2.5s infinite ease-in-out;
-}
-.carta{
-    border-radius: 14px;
+        
+
+
+    @keyframes bailar {
+        0% { transform: rotate(0deg); }
+        25% { transform: rotate(-10deg); }
+        50% { transform: rotate(0deg); }
+        75% { transform: rotate(10deg); }
+        100% { transform: rotate(0deg); }
+    }
+
+    #girasol {
+        transform-origin: bottom center;
+        animation: bailar 2.5s infinite ease-in-out;
+    }
+
+    .carta {
+        border-radius: 14px;
         position: absolute;
         width: 100px;
-        height:40px;
-        border: 2px solid rgb(0, 0, 0);
+        height: 40px;
+        border: 2px solid black;
         display: flex;
         align-items: center;
         justify-content: center;
-        left: 0;
-        transform: translateX(607%);
-        text-decoration: none; /* Quitar subrayado del enlace */
-        font-size: 18px; /* Tamaño del texto */
-            font-weight: bold; /* Negrita */
-            font-family:'patrick Hand',cursive;
-            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2); /* Sombra suave */
-            transition: transform 0.2s ease, background-color 0.3s ease;
-            bottom: 10px; /* Mantiene el texto debajo de la maceta */
-            left: 80%; /* Lo mueve más a la derecha (ajusta el porcentaje si es necesario) */
-            transform: translateX(-62%); /* Ajusta el centrado */
-            font-size: 18px; /* Tamaño del texto */
-            color: rgb(0, 0, 0); /* Color rojo */
-            font-weight: bold; /* Negrita */
-            white-space: nowrap; /* Evita que el texto se divida en varias líneas */
-            left: 51%;
-            font-size: 21px; /* 🔥 LETRAS GRANDES 🔥 */
-            font-family:'patrick Hand',cursive;
-            
+        text-decoration: none;
+        font-size: 21px;
+        font-weight: bold;
+        font-family: 'Patrick Hand', cursive;
+        box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+        transition: transform 0.2s ease, background-color 0.3s ease;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        color: black;
+        white-space: nowrap;
     }
 
-    
-    #youtube-player {
+    .texto-san-valentin {
         position: absolute;
-        width: 1px;
-        height: 1px;
-        opacity: 0;
+        bottom: 60px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 32px;
+        color: black;
+        font-weight: bold;
+        font-family: 'Patrick Hand', cursive;
     }
 
-    .texto-san-valentin {
-        position: absolute; /* Mantiene el texto independiente */
-        bottom: 60px; /* Mantiene el texto debajo de la maceta */
-        left: 80%; /* Lo mueve más a la derecha (ajusta el porcentaje si es necesario) */
-        transform: translateX(-50%); /* Ajusta el centrado */
-        font-size: 18px; /* Tamaño del texto */
-        color: rgb(0, 0, 0); /* Color rojo */
-        font-weight: bold; /* Negrita */
-        white-space: nowrap; /* Evita que el texto se divida en varias líneas */
-        left: 51%;
-        font-size: 32px; /* 🔥 LETRAS GRANDES 🔥 */
-        font-family:'patrick Hand',cursive;
+    @media (max-width: 768px) {
+        .rectangulo { width: 130px; height: 16px; }
+        .maceta { width: 120px; height: 80px; }
+        .tierra { width: 90px; height: 35px; }
+        .carta { width: 90px; font-size: 16px; }
+        .texto-san-valentin { font-size: 28px; }
+        #girasol { width: 80%; }
     }
-    
-    /* Medias Queries para hacer la página responsive sin alterar nada */
-@media (max-width: 768px) {
-    .rectangulo {
-        width: 130px;  /* Ajuste en el ancho */
-        height: 16px;  /* Ajuste en la altura */
-    }
-    .maceta {
-        width: 50%;  /* Ajuste en el tamaño de la maceta */
-        height: 90px;  /* Ajuste en la altura */
-    }
-    .tierra {
-        width: 50%;  /* Ajuste en el tamaño de la tierra */
-        height: 35px;  /* Ajuste en la altura */
-    }
-    .carta {
-        width: 100px;  /* Ajuste en el tamaño de la carta */
-        font-size: 16px;  /* Ajuste en el tamaño de la fuente */
-    }
-    .texto-san-valentin {
-        font-size: 28px;  /* Ajuste en el tamaño del texto */
-    }
-    #girasol {
-        width: 80%;  /* Ajuste en el tamaño del girasol */
-    }
-}
 
-@media (max-width: 480px) {
-    .rectangulo {
-        width: 100px;  /* Ajuste en el ancho */
-        height: 14px;  /* Ajuste en la altura */
+    @media (max-width: 480px) {
+        .rectangulo { width: 100px; height: 14px; }
+        .maceta { width: 100px; height: 70px; }
+        .tierra { width: 80px; height: 30px; }
+        .carta { width: 80px; font-size: 14px; }
+        .texto-san-valentin { font-size: 24px; }
+        #girasol { width: 70%; }
     }
-    .maceta {
-        width: 60%;  /* Ajuste en el tamaño de la maceta */
-        height: 80px;  /* Ajuste en la altura */
+    #youtube-player {
+        display: none;
     }
-    .tierra {
-        width: 60%;  /* Ajuste en el tamaño de la tierra */
-        height: 30px;  /* Ajuste en la altura */
-    }
-    .carta {
-        width: 90px;  /* Ajuste en el tamaño de la carta */
-        font-size: 14px;  /* Ajuste en el tamaño de la fuente */
-    }
-    .texto-san-valentin {
-        font-size: 24px;  /* Ajuste en el tamaño del texto */
-    }
-    #girasol {
-        width: 70%;  /* Ajuste en el tamaño del girasol */
-    }
-}
