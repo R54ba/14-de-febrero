@@ -73,6 +73,114 @@ function crearHoja(cx, cy, rot) {
     hoja.setAttribute("stroke", "#2e7d32");  
     hoja.setAttribute("stroke-width", "1");
     hoja.setAttribute("transform", `rotate(${rot}, ${cx}, ${cy})`);
+
+    const venas = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    let venasPath = `M ${cx} ${cy} L ${cx} ${cy - 80}`;
+    venasPath += ` M ${cx} ${cy - 20} Q ${cx + 10} ${cy - 30}, ${cx + 5} ${cy - 40}`;
+    venasPath += ` M ${cx} ${cy - 30} Q ${cx - 10} ${cy - 45}, ${cx - 5} ${cy - 55}`;
+    venasPath += ` M ${cx} ${cy - 50} Q ${cx + 8} ${cy - 60}, ${cx + 4} ${cy - 70}`;
+    venasPath += ` M ${cx} ${cy - 50} Q ${cx - 8} ${cy - 60}, ${cx - 4} ${cy - 70}`;
+
+    venas.setAttribute("d", venasPath);
+    venas.setAttribute("stroke", "#2e7d32"); 
+    venas.setAttribute("stroke-width", "1.5");
+    venas.setAttribute("fill", "none");
+    venas.setAttribute("transform", `rotate(${rot}, ${cx}, ${cy})`);
+
+    const grupoHoja = document.createElementNS("http://www.w3.org/2000/svg", "g");
+    grupoHoja.appendChild(hoja);
+    grupoHoja.appendChild(venas);
+    return grupoHoja;
+}
+
+// Agregar las hojas ANTES de los pétalos
+svg.appendChild(crearHoja(95, 215, -68, 0.7));  // Hoja izquierda
+svg.appendChild(crearHoja(110, 220, 48));  // Hoja derecha
+
+// Función para crear un pétalo
+function crearPetalo(cx, cy, angulo) {
+    const petalo = document.createElementNS("http://www.w3.org/2000/svg", "path");
+
+    petalo.setAttribute("d", `M ${cx} ${cy} 
+                              C ${cx + 15} ${cy - 40}, ${cx + 45} ${cy - 50}, ${cx + 20} ${cy - 80}  
+                              Q ${cx} ${cy - 100}, ${cx - 20} ${cy - 80}  
+                              C ${cx - 45} ${cy - 50}, ${cx - 15} ${cy - 40}, ${cx} ${cy}`);
+    
+    petalo.setAttribute("fill", "#ffcc00"); // Amarillo vibrante
+    petalo.setAttribute("stroke", "#d4a017"); // Contorno
+    petalo.setAttribute("stroke-width", "2");
+    petalo.setAttribute("transform", `rotate(${angulo}, 100, 100)`);
+    return petalo;
+}
+
+// Crear pétalos DESPUÉS del tallo y las hojas
+const cantidadPetalos = 7;
+for (let i = 0; i < cantidadPetalos; i++) {
+    let angulo = (360 / cantidadPetalos) * i;
+    svg.appendChild(crearPetalo(100, 91, angulo));
+}
+
+// Centro del girasol (marrón oscuro) debe ser lo último
+const centro = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+centro.setAttribute("cx", "100");
+centro.setAttribute("cy", "100");
+centro.setAttribute("r", "50");
+centro.setAttribute("fill", "#D35400");
+svg.appendChild(centro);
+
+// 👀 Función para crear un ojo
+function crearOjo(cx, cy) {
+    const grupoOjo = document.createElementNS("http://www.w3.org/2000/svg", "g");
+
+    // 👁️ Ojo (blanco)
+    const ojo = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+    ojo.setAttribute("cx", cx);
+    ojo.setAttribute("cy", cy);
+    ojo.setAttribute("r", "10");
+    ojo.setAttribute("fill", "white");
+
+    // 👁️ Pupila (negro)
+    const pupila = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+    pupila.setAttribute("cx", cx);
+    pupila.setAttribute("cy", cy);
+    pupila.setAttribute("r", "4");
+    pupila.setAttribute("fill", "black");
+
+    // 👀 Párpado (para el parpadeo)
+    const parpado = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+    parpado.setAttribute("x", cx - 10);
+    parpado.setAttribute("y", cy - 10);
+    parpado.setAttribute("width", "20");
+    parpado.setAttribute("height", "10");
+    parpado.setAttribute("fill", "black");
+
+    grupoOjo.appendChild(ojo);
+    grupoOjo.appendChild(pupila);
+    grupoOjo.appendChild(parpado);
+
+    return { grupoOjo, parpado };
+    
+}
+
+// 😃 Función para crear la boca sonriente
+function crearBoca(cx, cy) {
+    const boca = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    boca.setAttribute("d", `M ${cx - 15} ${cy} Q ${cx} ${cy + 10}, ${cx + 15} ${cy}`);
+    boca.setAttribute("stroke", "black");
+    boca.setAttribute("stroke-width", "2");
+    boca.setAttribute("fill", "none");
+    return boca;
+}
+
+// 🏗️ Agregamos los ojos y la boca al centro del girasol
+const centroX = 100;
+const centroY = 100;
+const separacionOjos = 18; // Distancia entre los ojos
+
+const ojoIzquierdo = crearOjo(centroX - separacionOjos, centroY - 10);
+const ojoDerecho = crearOjo(centroX + separacionOjos, centroY - 10);
+const boca = crearBoca(centroX, centroY + 15);
+
 svg.appendChild(ojoIzquierdo.grupoOjo);
 svg.appendChild(ojoDerecho.grupoOjo);
 svg.appendChild(boca);
